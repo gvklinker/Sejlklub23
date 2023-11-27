@@ -25,4 +25,4 @@ app.MapRazorPages();
 app.Run();
 
 
-//MOLLES EDIT FRA DESKTOP!
+//MOLLES EDIT FRA DESKTOP! Og nu har Gustav også
