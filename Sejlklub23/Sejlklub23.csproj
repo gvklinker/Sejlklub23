@@ -8,7 +8,9 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Services\" />
+    <Folder Include="Pages\Boats\" />
+    <Folder Include="Pages\Members\" />
+    <Folder Include="Pages\Reservations\" />
   </ItemGroup>
 
 </Project>
