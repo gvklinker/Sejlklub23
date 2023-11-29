@@ -7,7 +7,7 @@ namespace Sejlklub23.Interfaces
         List<Member> GetAllEvents();
         Member GetMember(int id);
         void CreateMember(Member member);
-        void DeleteMember(Member member);
+        void DeleteMember(int id);
         void UpdateMember(Member member);
     }
 }
