@@ -7,7 +7,7 @@ namespace Sejlklub23.Interfaces
         List<Boat> GetAllBoats();
         Event GetBoat(int id);
         void CreateBoat(Boat boat);
-        void DeleteBoat(Boat boat);
+        void DeleteBoat(int id);
         void UpdateBoat(Boat boat);﻿
     }
 }
