@@ -1,4 +1,4 @@
-﻿using Sejlklub23.Models;
+using Sejlklub23.Models;
 
 namespace Sejlklub23.Interfaces
 {
@@ -8,6 +8,6 @@ namespace Sejlklub23.Interfaces
         Event GetBoat(int id);
         void CreateBoat(Boat boat);
         void DeleteBoat(Boat boat);
-        void UpdateBoat(Boat boat);
+        void UpdateBoat(Boat boat);﻿
     }
 }
