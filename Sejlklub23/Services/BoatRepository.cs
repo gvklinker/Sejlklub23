@@ -10,14 +10,26 @@ namespace Sejlklub23.Services
         
         public void CreateBoat(Boat boat)
         {
-            List<int> ints = new List<int>();
+            List<int> ids = new List<int>();
             List<Boat> boats = GetAllBoats();
+            foreach (var item in boats)
+            {
+                ids.Add(item.Id);
+            }
+            if (ids.Count != 0) 
+                boat.Id = ids.Max() + 1;
+            else
+                boat.Id = 1;
+            boats.Add(boat);
+            JsonFileWriter<Boat>.WriteToJson(boats, jsonFileName);
 
         }
 
         public void DeleteBoat(int id)
         {
-            throw new NotImplementedException();
+            List<Boat> boats = GetAllBoats();
+            boats.Remove(boats.Find(boat=>boat.Id == id));
+            JsonFileWriter<Boat>.WriteToJson(boats, jsonFileName);
         }
 
         public List<Boat> GetAllBoats()
@@ -25,9 +37,9 @@ namespace Sejlklub23.Services
             return  JsonFileReader<Boat>.ReadJson(jsonFileName);
         }
 
-        public Event GetBoat(int id)
+        public Boat GetBoat(int id)
         {
-            throw new NotImplementedException();
+            return GetAllBoats().Find(boat => boat.Id == id);
         }
 
         public void UpdateBoat(Boat boat)
