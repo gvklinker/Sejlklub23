@@ -1,14 +1,18 @@
 ﻿using Sejlklub23.Interfaces;
 using Sejlklub23.Models;
+using Sejlklub23.Helpers;
 
 namespace Sejlklub23.Services
 {
     public class BoatRepository : IBoatRepository
     {
         private string jsonFileName = "@Data/Boats.json";
+        
         public void CreateBoat(Boat boat)
         {
-            throw new NotImplementedException();
+            List<int> ints = new List<int>();
+            List<Boat> boats = GetAllBoats();
+
         }
 
         public void DeleteBoat(int id)
@@ -18,7 +22,7 @@ namespace Sejlklub23.Services
 
         public List<Boat> GetAllBoats()
         {
-            throw new NotImplementedException();
+            return  JsonFileReader<Boat>.ReadJson(jsonFileName);
         }
 
         public Event GetBoat(int id)
