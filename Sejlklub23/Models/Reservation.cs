@@ -11,14 +11,11 @@ namespace Sejlklub23.Models
         public int LocationDuration { get; set;}
         [Required]
         public bool IsReturned { get; set; }
-        /*Missing list of Boat
         [Required]
-        public Boats BoatId{ get; set; }
-        */
-        /*Missing list of Members
+        public int BoatId{ get; set; }
         [Required]
-        public Members MemberId{ get; set; }
-        */
+        public int MemberId{ get; set; }
+        
         public Reservation(int id, DateTime startOfLoacation, int locationDuration, bool isReturned)
         {
             Id = id;
