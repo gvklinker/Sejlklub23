@@ -44,7 +44,22 @@ namespace Sejlklub23.Services
 
         public void UpdateBoat(Boat boat)
         {
-            throw new NotImplementedException();
+            if(boat != null)
+            {
+                List<Boat> boats = GetAllBoats();
+                foreach(var item in boats)
+                {
+                    if(item.Id == boat.Id)
+                    {
+                        item.Model = boat.Model;
+                        item.Name = boat.Name;
+                        break;
+                    }
+
+                }
+                JsonFileWriter<Boat>.WriteToJson(boats, jsonFileName);
+
+            }
         }
     }
 }
