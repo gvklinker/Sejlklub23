@@ -2,7 +2,7 @@
 
 namespace Sejlklub23.Models
 {
-    public class Events
+    public class Event
     {
         public int Id { get; set; }
         [Required]
@@ -16,7 +16,7 @@ namespace Sejlklub23.Models
         [Required]
         public string Address { get; set; }
 
-        public Events (int id, string title, string description, DateTime startOfEvent, int eventDuration, string address)
+        public Event (int id, string title, string description, DateTime startOfEvent, int eventDuration, string address)
         {
             Id = id;
             Title = title;

@@ -2,7 +2,7 @@
 
 namespace Sejlklub23.Models
 {
-    public class Boats
+    public class Boat
     {
         public int Id { get; set; }
         [Required]
@@ -10,7 +10,7 @@ namespace Sejlklub23.Models
         [Required]
         public string Name { get; set; }
 
-        public Boats (int id, string model, string name)
+        public Boat (int id, string model, string name)
         {
             Id = id;
             Model = model;

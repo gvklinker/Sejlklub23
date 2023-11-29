@@ -2,7 +2,7 @@
 
 namespace Sejlklub23.Models
 {
-    public class Reservations
+    public class Reservation
     {
         public int Id { get; set; }
         [Required]
@@ -19,7 +19,7 @@ namespace Sejlklub23.Models
         [Required]
         public Members MemberId{ get; set; }
         */
-        public Reservations(int id, DateTime startOfLoacation, int locationDuration, bool isReturned)
+        public Reservation(int id, DateTime startOfLoacation, int locationDuration, bool isReturned)
         {
             Id = id;
             StartOfLocation = startOfLoacation;

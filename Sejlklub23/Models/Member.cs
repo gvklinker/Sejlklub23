@@ -2,7 +2,7 @@
 
 namespace Sejlklub23.Models
 {
-    public class Members
+    public class Member
     {
         public int Id { get; set; }
         [Required]
@@ -18,7 +18,7 @@ namespace Sejlklub23.Models
 
         public bool IsAdmin { get; set; }
 
-        public Members(int id, string name, string password, string email, string phoneNumber, string address) 
+        public Member(int id, string name, string password, string email, string phoneNumber, string address) 
         {
             Id = id;
             Name = name;
