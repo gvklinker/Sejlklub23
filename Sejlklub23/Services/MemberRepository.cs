@@ -45,7 +45,7 @@ namespace Sejlklub23.Services
         Dictionary< int, Member> IMemberRepository.GetAllMembers()
         {
             _members.Clear();
-            List<Member> memberListe =JsonFileReader<Member>.ReadJson(jsonFileName);
+            List<Member> memberListe = JsonFileReader<Member>.ReadJson(jsonFileName);
             foreach (Member member in memberListe)
             {
                 _members.Add((int)member.Id, member);
