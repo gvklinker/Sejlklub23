@@ -1,4 +1,21 @@
 ﻿@page
 @model Sejlklub23.Pages.Boats.UpdateBoatModel
 @{
+    ViewData["Title"] = "Edit Boat";
 }
+<form method="post">
+    <input type="hidden" asp-for="@Model.BoatToUpdate.Id" />
+    <div class="form-group">
+        <label asp-for="BoatToUpdate.Name" class="control-label"> </label>
+        <input asp-for="BoatToUpdate.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BoatToUpdate.Model" class="control-label"> </label>
+        <input asp-for="BoatToUpdate.Model" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Update" asp-page-handler="Update" class="btn btn-primary" />
+        <input type="submit" value="Delete" asp-page-handler="Delete" class="btn btn-primary" />
+    </div>
+</form>
