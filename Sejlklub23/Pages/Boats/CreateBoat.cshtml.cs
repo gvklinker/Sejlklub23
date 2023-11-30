@@ -21,6 +21,8 @@ namespace Sejlklub23.Pages.Boats
 
         public IActionResult OnPost()
         {
+            if(!ModelState.IsValid)
+                return Page();
             _boatRepository.CreateBoat(Boat);
             return RedirectToPage("Index");
         }

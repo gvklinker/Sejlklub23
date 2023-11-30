@@ -1,7 +1,12 @@
 [
   {
     "Id": 1,
-    "Model": "HurtigBåd",
+    "Model": "HurtigB\u00E5d",
     "Name": "Jens"
+  },
+  {
+    "Id": 2,
+    "Model": "SejlB\u00E5d",
+    "Name": "Bob"
   }
 ]
