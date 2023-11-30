@@ -1,7 +1,11 @@
+using Sejlklub23.Interfaces;
+using Sejlklub23.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddTransient<IBoatRepository, BoatRepository>();
 
 var app = builder.Build();
 
@@ -25,4 +29,4 @@ app.MapRazorPages();
 app.Run();
 
 
-//MOLLES EDIT FRA DESKTOP! Og nu har Gustav også
+//MOLLES EDIT FRA DESKTOP! Og nu har Gustav ogs

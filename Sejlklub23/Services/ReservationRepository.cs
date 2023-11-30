@@ -6,7 +6,7 @@ namespace Sejlklub23.Services
     public class ReservationRepository : IReservationRepository
     {
 
-        private string fileNameJson = "@Data/Reservations.json"; 
+        private string fileNameJson = @"Data\Reservations.json"; 
         public void CreateReservation(Reservation res)
         {
             List<int> ids = new List<int>();

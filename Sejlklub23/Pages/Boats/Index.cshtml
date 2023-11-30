@@ -1,0 +1,28 @@
+﻿@page
+@using Sejlklub23.Models;
+@model Sejlklub23.Pages.Boats.IndexModel
+@{
+    ViewData["Title"] = "Boats in the system";
+}
+<h1>List of boats</h1>
+<p>
+    <a asp-page="CreateBoat">Create boat</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Boat b in Model.Boats){
+        <tr>
+            <td>@b.Id</td>
+            <td>@b.Model</td>
+            <td>@b.Name</td>
+        </tr>
+        }
+    </tbody>
+</table>

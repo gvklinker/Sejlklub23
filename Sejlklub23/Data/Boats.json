@@ -1,3 +1,7 @@
-{
-
-}
+[
+  {
+    "Id": 1,
+    "Model": "HurtigBåd",
+    "Name": "Jens"
+  }
+]

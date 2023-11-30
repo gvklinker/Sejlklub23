@@ -7,7 +7,7 @@ namespace Sejlklub23.Services
     public class BoatRepository : IBoatRepository
     {
         //Filename for the Json file we are saving the data in
-        private string jsonFileName = "@Data/Boats.json";
+        private string jsonFileName = @"Data\Boats.json";
         
         //Recieves a boat object and adds it to the current List<> of boats 
         public void CreateBoat(Boat boat)

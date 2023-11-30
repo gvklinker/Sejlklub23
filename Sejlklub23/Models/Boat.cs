@@ -9,7 +9,7 @@ namespace Sejlklub23.Models
         public string Model { get; set; }
         [Required]
         public string Name { get; set; }
-
+        public Boat() { }
         public Boat (int id, string model, string name)
         {
             Id = id;
