@@ -8,7 +8,7 @@ namespace Sejlklub23.Services
     public class MemberRepository : IMemberRepository
     {
         private Dictionary<int,  Member> _members;
-        string jsonFileName = "@Data/Members.json";
+        string jsonFileName = @"Data\Members.json";
         public void CreateMember(Member member)
         {
             if (member != null || !_members.ContainsKey(member.Id))

@@ -7,7 +7,7 @@ namespace Sejlklub23.Services
     public class EventRepository : IEventRepository
     {
         private List<Event> _events;
-        string jsonFileName = "@Data/Members.json";
+        string jsonFileName = @"Data\Events.json";
         public void CreateEvent(Event ev)
         {
             if (ev != null)
