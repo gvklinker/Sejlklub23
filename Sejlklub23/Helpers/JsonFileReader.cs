@@ -12,5 +12,6 @@ namespace Sejlklub23.Helpers
                 return JsonSerializer.Deserialize<List<T>>(inddata);
             }
         }
+
     }
 }
