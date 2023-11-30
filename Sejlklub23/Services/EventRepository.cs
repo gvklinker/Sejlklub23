@@ -13,6 +13,7 @@ namespace Sejlklub23.Services
             if (ev != null)
             {
                 _events.Add(ev);
+                JsonFileWriter<Event>.WriteToJson(_events, jsonFileName);
             }
         }
 
@@ -23,6 +24,8 @@ namespace Sejlklub23.Services
                 if (ev != null || ev.Id == _events[i].Id)
                 {
                     _events.RemoveAt(i);
+                    JsonFileWriter<Event>.WriteToJson(_events, jsonFileName);
+                    break;
                 }
             }
         }
@@ -55,6 +58,7 @@ namespace Sejlklub23.Services
                         e.EventDuration = ev.EventDuration;
                         e.Address = ev.Address;
                         e.StartOfEvent = ev.StartOfEvent;
+                        JsonFileWriter<Event>.WriteToJson(_events, jsonFileName);
                     }
                 }
             }
