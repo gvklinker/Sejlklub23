@@ -18,10 +18,9 @@ namespace Sejlklub23.Services
             }
         }
 
-        public void DeleteMember(Member member)
+        public void DeleteMember(int id)
         {
-            if (member != null) 
-            _members.Remove(member.Id);
+            _members.Remove(id);
         }
 
         public Member GetMember(int id)

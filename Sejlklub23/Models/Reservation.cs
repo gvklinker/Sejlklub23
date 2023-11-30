@@ -14,9 +14,9 @@ namespace Sejlklub23.Models
         [Required]
         public int BoatId{ get; set; }
         [Required]
-        public Members MemberId{ get; set; }
+        public int MemberId{ get; set; }
        
-        public Reservation(int id, DateTime startOfLoacation, int locationDuration, bool isReturned)
+        public Reservation(int id, DateTime startOfLoacation, int locationDuration, bool isReturned, int boatId, int memberId)
         {
             Id = id;
             StartOfLocation = startOfLoacation;
