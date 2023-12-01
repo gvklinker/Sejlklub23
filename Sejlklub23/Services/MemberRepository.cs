@@ -55,7 +55,7 @@ namespace Sejlklub23.Services
                 if (_members.ContainsKey(member.Id))
                 {
                     _members[member.Id] = member;
-                    JsonFileWriter<Member>.WriteToJson(FromDictonnaryToList(GetAllMembers()), jsonFileName);
+                    JsonFileWriter<Member>.WriteToJson(FromDictonnaryToList(_members), jsonFileName);
                 }
             }
         }
