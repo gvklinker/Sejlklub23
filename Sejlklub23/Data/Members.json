@@ -1,5 +1,29 @@
 [
   {
-
+    "Id": 0,
+    "Name": "bob",
+    "Password": "bobbob",
+    "Email": "bob@bob.dk",
+    "PhoneNumber": "12345678",
+    "Address": "bobsvej 2",
+    "IsAdmin": false
+  },
+  {
+    "Id": 1,
+    "Name": "Gustav Klinker",
+    "Password": "bobbob",
+    "Email": "gulle139@hotmail.com",
+    "PhoneNumber": "42725669",
+    "Address": "Borgmestervangen 9. 2.11",
+    "IsAdmin": false
+  },
+  {
+    "Id": 2,
+    "Name": "Gustav Klinker",
+    "Password": "bobbob",
+    "Email": "gulle139@hotmail.com",
+    "PhoneNumber": "42725669",
+    "Address": "Borgmestervangen 9. 2.11",
+    "IsAdmin": false
   }
 ]

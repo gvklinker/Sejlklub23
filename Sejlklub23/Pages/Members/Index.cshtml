@@ -1,0 +1,35 @@
+﻿@page
+@model Sejlklub23.Pages.Members.IndexModel
+@{
+    ViewData["Title"] = "List of members";
+}
+<h1>List of members</h1>
+<p>
+    <a asp-page="CreateMember">Create member</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model.Members)
+        {
+            <tr>
+                <td>@m.Value.Id</td>
+                <td>@m.Value.Name</td>
+                <td>@m.Value.Email</td>
+                <td>@m.Value.PhoneNumber</td>
+                <td>@m.Value.Address</td>
+                <td>@m.Value.Password</td>
+                <td><a asp-page="UpdateBoat" asp-route-id="@m.Value.Id">Edit</a></td>
+                <td><a asp-page="DeleteBoat" asp-route-deleteId="@m.Value.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

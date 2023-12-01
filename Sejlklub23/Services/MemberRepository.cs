@@ -7,29 +7,41 @@ namespace Sejlklub23.Services
 {
     public class MemberRepository : IMemberRepository
     {
-        private Dictionary<int,  Member> _members;
+        //private Dictionary<int,  Member> _members = new Dictionary<int, Member>();
         string jsonFileName = @"Data\Members.json";
-        List<Member> memberListe = new List<Member>();
+        //List<Member> memberListe = new List<Member>();
         public void CreateMember(Member member)
         {
-            if (member != null || !_members.ContainsKey(member.Id))
+            Dictionary<int, Member> _members = GetAllMembers();
+            List<int> ids = new List<int>();
+            foreach (var item in _members)
+            {
+                ids.Add(item.Key);
+            }
+            if (ids.Count > 0)
+                member.Id = ids.Max()+1;
+            else
+                member.Id = 1;
+            if (member != null && !_members.ContainsKey(member.Id))
             {
                 _members.Add(member.Id, member);
-                JsonFileWriter<Member>.WriteToJson(FromDictonnaryToList(member), jsonFileName);
+                JsonFileWriter<Member>.WriteToJson(FromDictonnaryToList(_members), jsonFileName);
             }
         }
 
         public void DeleteMember(int id)
         {
+            Dictionary<int, Member> _members = GetAllMembers();
             if (_members.ContainsKey(id))
             {
                 _members.Remove(id);
-                JsonFileWriter<Member>.WriteToJson(FromDictonnaryToList(GetMember(id)), jsonFileName);
+                JsonFileWriter<Member>.WriteToJson(FromDictonnaryToList(_members), jsonFileName);
             }
         }
 
         public Member GetMember(int id)
         {
+            Dictionary<int, Member> _members = GetAllMembers();
             if (_members.ContainsKey(id))
                 return _members[id];
             return null;
@@ -37,30 +49,39 @@ namespace Sejlklub23.Services
 
         public void UpdateMember(Member member)
         {
+            Dictionary<int, Member> _members = GetAllMembers();
             if ( member != null)
             {
                 if (_members.ContainsKey(member.Id))
                 {
                     _members[member.Id] = member;
-                    JsonFileWriter<Member>.WriteToJson(FromDictonnaryToList(member), jsonFileName);
+                    JsonFileWriter<Member>.WriteToJson(FromDictonnaryToList(GetAllMembers()), jsonFileName);
                 }
             }
         }
 
-        Dictionary< int, Member> IMemberRepository.GetAllMembers()
+        public Dictionary< int, Member> GetAllMembers()
         {
-            _members.Clear();
-            List<Member> memberListe = JsonFileReader<Member>.ReadJson(jsonFileName);
-            foreach (Member member in memberListe)            
-                _members.Add((int)member.Id, member);
-            return _members;
+             List<Member> memberListe = JsonFileReader<Member>.ReadJson(jsonFileName);
+            return FromListToDictionary(memberListe);        
         }
 
-        protected List<Member> FromDictonnaryToList(Member member)
+        protected List<Member> FromDictonnaryToList(Dictionary<int, Member> dict)
         {
-            memberListe.Clear();
-                memberListe.Add(new Member(member.Id,member.Name,member.Password,member.Email,member.PhoneNumber,member.Address));
-            return memberListe;
+            List<Member> newList = new List<Member>();
+            foreach (var item in dict)
+            {
+                newList.Add(item.Value);
+            }
+            return newList;
+        }
+
+        private Dictionary<int, Member> FromListToDictionary(List<Member> members)
+        {
+            Dictionary<int, Member> dict = new Dictionary<int, Member>();
+            foreach(Member m in members)
+                dict.Add(m.Id, m);            
+            return dict;
         }
     }
 }

@@ -9,6 +9,7 @@
     <div class="form-group">
         <label asp-for="NewMember.Name" class="control-label"> </label>
         <input asp-for="NewMember.Name" class="form-control" />
+
     </div>
     <div class="form-group">
         <label asp-for="NewMember.Email" class="control-label"> </label>
@@ -16,7 +17,7 @@
     </div>
     <div class="form-group">
         <label asp-for="NewMember.Password" class="control-label"> </label>
-        <input asp-for="NewMember.Password" class="form-control" />
+        <input asp-for="NewMember.Password" class="control-label" />
     </div>
     <div class="form-group">
         <label asp-for="NewMember.Address" class="control-label"> </label>
@@ -34,5 +35,5 @@
 </form>
 
 <div>
-    <a asp-page="/Hotels/Index">Back</a>
+    <a asp-page="/Members/Index">Back</a>
 </div>
