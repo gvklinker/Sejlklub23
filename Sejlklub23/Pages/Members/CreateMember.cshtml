@@ -1,4 +1,38 @@
 ﻿@page
 @model Sejlklub23.Pages.Members.CreateMemberModel
 @{
+    ViewData["Title"] = "Create Member";
 }
+<h1> Create Hotel </h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="NewMember.Name" class="control-label"> </label>
+        <input asp-for="NewMember.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NewMember.Email" class="control-label"> </label>
+        <input asp-for="NewMember.Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NewMember.Password" class="control-label"> </label>
+        <input asp-for="NewMember.Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NewMember.Address" class="control-label"> </label>
+        <input asp-for="NewMember.Address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NewMember.PhoneNumber" class="control-label"> </label>
+        <input asp-for="NewMember.PhoneNumber" class="form-control" />
+    </div>
+
+   
+    <div class="form-group">
+        <input type="submit" value="Create a Hotel" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-page="/Hotels/Index">Back</a>
+</div>
