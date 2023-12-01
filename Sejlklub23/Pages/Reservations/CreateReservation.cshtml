@@ -1,4 +1,30 @@
 ﻿@page
 @model Sejlklub23.Pages.Reservations.CreateReservationModel
 @{
+    ViewData["Title"] = "Reserve boat";
 }
+
+<h1>Reserve boat</h1>
+<form method="post">
+    <div class="form-group">
+        <label class="control-label">User</label>
+        <select asp-for="@Model.NewReservation.MemberId" asp-items="@Model.MemberList" class="form-control">
+            <option value="">--Select a user--</option>
+        </select>
+
+    </div>
+    <div class="form-group">
+        <label class="control-label">Hotel</label>
+        <select asp-for="@Model.NewReservation.BoatId" asp-items="@Model.BoatList" class="form-control">
+            <option value="">--Select a hotel--</option>
+        </select>
+
+    </div>
+    
+    <div class=" form-group">
+        <input type="submit" value="Create booking" class="btn btn-primary" />
+        <input type="submit" value="Test Book" asp-asp-page-handler="Test" class="btn btn-primary" />
+    </div>
+
+
+</form>
