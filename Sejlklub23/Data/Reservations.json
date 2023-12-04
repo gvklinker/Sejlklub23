@@ -1,5 +1,10 @@
 [
   {
-
+    "Id": 1,
+    "StartOfLocation": "2023-12-16T14:15:00",
+    "LocationDuration": 5,
+    "IsReturned": false,
+    "BoatId": 1,
+    "MemberId": 0
   }
 ]

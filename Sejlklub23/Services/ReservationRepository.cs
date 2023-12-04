@@ -28,7 +28,7 @@ namespace Sejlklub23.Services
         public void DeleteReservation(int id)
         {
             List<Reservation> reservations = GetAllReservations();
-            reservations.Remove(GetReservation(id));
+            reservations.Remove(reservations.Find(x=>x.Id==id));
             JsonFileWriter<Reservation>.WriteToJson(reservations, fileNameJson);
 
         }

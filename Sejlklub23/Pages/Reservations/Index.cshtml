@@ -1,0 +1,42 @@
+﻿@page
+@using Sejlklub23.Models;
+@using Sejlklub23.Interfaces;
+@inject IMemberRepository mRepo;
+@inject IBoatRepository bRepo;
+@model Sejlklub23.Pages.Reservations.IndexModel
+@{
+    ViewData["Title"] = "Reservations";
+}
+<h1>List of boats</h1>
+<p>
+    <a asp-page="CreateReservation">Create reservations</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Start</th>
+            <th>Duration</th>
+            <th>Returned</th>
+            <th>Boat</th>
+            <th>Member</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Reservation r in Model.Reservations)
+        {
+            <tr>
+                <td>@r.Id</td>
+                <td>@r.StartOfLocation</td>
+                <td>@r.LocationDuration</td>
+                <td>@r.IsReturned</td>
+                <td>@bRepo.GetBoat(r.BoatId).Name</td>
+                <td>@mRepo.GetMember(r.MemberId).Name</td>
+                <td><a asp-page="UpdateReservation" asp-route-id="@r.Id">Edit</a></td>
+                <td><a asp-page="DeleteReservation" asp-route-deleteId="@r.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

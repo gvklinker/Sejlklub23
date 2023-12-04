@@ -9,6 +9,10 @@ namespace Sejlklub23.Pages.Reservations
     public class CreateReservationModel : PageModel
     {
         private IReservationRepository reservationRepository;
+        private IBoatRepository boatRepository;
+        private IMemberRepository memberRepository;
+        private Dictionary<int, Member> Members {get; set;}
+        private List<Boat> Boats { get; set;}
         public SelectList MemberList { get; set; }
         public SelectList BoatList { get; set; }
         [BindProperty]
@@ -16,9 +20,13 @@ namespace Sejlklub23.Pages.Reservations
 
         public CreateReservationModel(IReservationRepository repo, IMemberRepository mRepo, IBoatRepository bRepo)
         {
+            boatRepository = bRepo;
+            memberRepository = mRepo;
+            Members = memberRepository.GetAllMembers();
+            Boats = boatRepository.GetAllBoats();
             reservationRepository = repo;
-            MemberList = new SelectList(mRepo.GetAllMembers(),"Id", "Name");
-            BoatList = new SelectList(bRepo.GetAllBoats(), "Id", "Name");
+            MemberList = new SelectList( Members.Values,"Id", "Name");
+            BoatList = new SelectList(Boats, "Id", "Name");
         }
         public void OnGet()
         {
