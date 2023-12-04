@@ -1,4 +1,33 @@
 ﻿@page
 @model Sejlklub23.Pages.Members.UpdateMemberModel
 @{
+    ViewData["Title"]= "Update member";
 }
+<form method="post">
+    <input type="hidden" asp-for="@Model.MemberToUpdate.Id" />
+    <div class="form-group">
+        <label asp-for="MemberToUpdate.Name" class="control-label"> </label>
+        <input asp-for="MemberToUpdate.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MemberToUpdate.Email" class="control-label"> </label>
+        <input asp-for="MemberToUpdate.Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MemberToUpdate.Password" class="control-label"> </label>
+        <input asp-for="MemberToUpdate.Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MemberToUpdate.Address" class="control-label"> </label>
+        <input asp-for="MemberToUpdate.Address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MemberToUpdate.PhoneNumber" class="control-label"> </label>
+        <input asp-for="MemberToUpdate.PhoneNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Update" asp-page-handler="Update" class="btn btn-primary" />
+        <input type="submit" value="Delete" asp-page-handler="Delete" class="btn btn-primary" />
+    </div>
+</form>

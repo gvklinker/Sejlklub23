@@ -18,6 +18,8 @@ namespace Sejlklub23.Models
 
         public bool IsAdmin { get; set; }
 
+        public Member() { }
+
         public Member(int id, string name, string password, string email, string phoneNumber, string address) 
         {
             Id = id;

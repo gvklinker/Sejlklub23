@@ -1,5 +1,11 @@
 [
   {
-
+    "Id": 0,
+    "Name": "bob bobsen",
+    "Password": "bobbob",
+    "Email": "bob@bob.dk",
+    "PhoneNumber": "12345678",
+    "Address": "bobsvej 2",
+    "IsAdmin": false
   }
 ]
