@@ -1,4 +1,22 @@
 ﻿@page
+@using Sejlklub23.Interfaces;
+@inject IBoatRepository bRepo;
+@inject IMemberRepository mRepo;
 @model Sejlklub23.Pages.Reservations.DeleteReservationModel
 @{
+    ViewData["Title"] = "Delete reservation";
 }
+
+<h1>Delete event</h1>
+<form method="post">
+    <div class="form-group">
+        <label>Id</label> : @Model.DeleteReservation.Id <br />
+        <label>Boat</label> : @bRepo.GetBoat(Model.DeleteReservation.BoatId).Name <br />
+        <label>Member</label> : @mRepo.GetMember(Model.DeleteReservation.MemberId).Name <br />
+        <label>Start</label> : @Model.DeleteReservation.StartOfLocation <br />
+        <label>Duration</label> : @Model.DeleteReservation.LocationDuration <br />
+        <input type="submit" asp-page-handler="Delete" asp-route-id="@Model.DeleteReservation.Id" class="btn btn-danger" value="Delete reservation" />
+
+        <input type="submit" value="Cancel" class="btn btn-warning" asp-page-handler="Cancel" />
+    </div>
+</form>
