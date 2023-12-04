@@ -7,5 +7,14 @@
     "PhoneNumber": "12345678",
     "Address": "bobsvej 2",
     "IsAdmin": false
+  },
+  {
+    "Id": 1,
+    "Name": "Anne Nielsen",
+    "Password": "N1elsen",
+    "Email": "an@gmail.com",
+    "PhoneNumber": "25632532",
+    "Address": "Andevej 3",
+    "IsAdmin": false
   }
 ]

@@ -3,5 +3,10 @@
     "Id": 1,
     "Model": "Hurtigste B\u00E5d",
     "Name": "Jens"
+  },
+  {
+    "Id": 2,
+    "Model": "Skonert",
+    "Name": "S\u00F8hesten"
   }
 ]
