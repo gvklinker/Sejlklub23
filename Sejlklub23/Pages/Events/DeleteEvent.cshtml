@@ -1,4 +1,21 @@
 ﻿@page
 @model Sejlklub23.Pages.Events.DeleteEventModel
 @{
+    ViewData["Title"] = "Delete event";
 }
+
+<h1>Delete event</h1>
+<form method="post">
+    <div class="form-group">
+        <label>Event id</label> : @Model.DeleteEvent.Id <br />
+        <label>Event name</label> : @Model.DeleteEvent.Title <br />
+        <label>Event city</label> : @Model.DeleteEvent.Description <br />
+        <label>Event date and time</label> : @Model.DeleteEvent.StartOfEvent <br />
+        <label>Event duration</label> : @Model.DeleteEvent.EventDuration <br />
+        <label>Event Address</label> : @Model.DeleteEvent.Address <br />
+
+        <input type="submit" asp-page-handler="Delete" asp-route-nummer="@Model.DeleteEvent.Id" class="btn btn-danger" value="Delete event" />
+
+        <input type="submit" value="Cancel" class="btn btn-warning" asp-page-handler="Cancel" />
+    </div>
+</form>
