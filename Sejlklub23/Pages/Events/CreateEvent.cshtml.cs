@@ -11,7 +11,7 @@ namespace Sejlklub23.Pages.Events
 
         [BindProperty]
         public Event NewEvent { get; set; }
-        private CreateEventModel(IEventRepository eventRepository)
+        private CreateEventModel(IEventRepository eventRepository) 
         {
             _repo = eventRepository;
         }
