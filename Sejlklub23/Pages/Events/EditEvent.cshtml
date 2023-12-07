@@ -1,4 +1,41 @@
 ﻿@page
 @model Sejlklub23.Pages.Events.EditEventModel
 @{
+    ViewData["Title"] = "Edit event";
 }
+
+<h1>Edit Event</h1>
+
+//Lav form med input felter til at vise event der skal opdateres
+
+<form method="post">
+
+    <input type="hidden" asp-for="@Model.EventToUpdate.Id" />
+    <div class="form-group">
+        <label asp-for="@Model.EventToUpdate.Title" class="control-label"></label>
+        <input asp-for="@Model.EventToUpdate.Title" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.EventToUpdate.Description" class="control-label"></label>
+        <input asp-for="@Model.EventToUpdate.Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.EventToUpdate.StartOfEvent" class="control-label"></label>
+        <input asp-for="@Model.EventToUpdate.StartOfEvent" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.EventToUpdate.EventDuration" class="control-label"></label>
+        <input asp-for="@Model.EventToUpdate.EventDuration" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.EventToUpdate.Address" class="control-label"></label>
+        <input asp-for="@Model.EventToUpdate.Address" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Update a event" asp-page-handler="Update" class="btn btn-primary" />
+        <input type="submit" value="Delete a event" asp-page-handler="Delete" class="btn btn-primary" />
+    </div>
+</form>
