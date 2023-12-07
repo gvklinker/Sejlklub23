@@ -1,0 +1,59 @@
+﻿@page
+@using Sejlklub23.Interfaces;
+@inject IEventRepository repository;
+@model Sejlklub23.Pages.Events.IndexModel
+@{
+    ViewData["Title"] = "index";
+}
+<h1>
+    List of events
+</h1>
+
+<p>
+    <a asp-page="CreateEvent">Create new event</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Id</th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Place
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                DateTime
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Events)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Description
+                </td>
+
+                <td>
+                    <a asp-page="EditEvent" asp-route-id="@item.Id"> Edit</a>
+                </td>
+                <td>
+                    <a asp-page="DeleteEvent" asp-route-id="@item.Id"> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
