@@ -1,4 +1,37 @@
 ﻿@page
 @model Sejlklub23.Pages.Events.CreateEventModel
 @{
+    ViewData["Title"] = "Create Event";
 }
+
+<h1>Create an event</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="group">
+        <label asp-for="@Model.NewEvent.Title" class="control-label"></label>
+        <input asp-for="@Model.NewEvent.Title" class="form-control" />
+        <span asp-validation-for="NewEvent.Title" class="text-danger"></span>
+    </div>
+    <div class="group">
+        <label asp-for="@Model.NewEvent.Description" class="control-label"></label>
+        <input asp-for="@Model.NewEvent.Description" class="form-control" />
+        <span asp-validation-for="NewEvent.Description" class="text-danger"></span>
+    </div>
+    <div class="group">
+        <label asp-for="@Model.NewEvent.StartOfEvent" class="control-label"></label>
+        <input asp-for="@Model.NewEvent.StartOfEvent" class="form-control" />
+        <span asp-validation-for="NewEvent.StartOfEvent" class="text-danger"></span>
+    </div>
+    <div class="group">
+        <label asp-for="@Model.NewEvent.EventDuration" class="control-label"></label>
+        <input asp-for="@Model.NewEvent.EventDuration" class="form-control" />
+        <span asp-validation-for="NewEvent.EventDuration" class="text-danger"></span>
+    </div>
+    <div class="group">
+        <label asp-for="@Model.NewEvent.Address" class="control-label"></label>
+        <input asp-for="@Model.NewEvent.Address" class="form-control" />
+        <span asp-validation-for="NewEvent.Address" class="text-danger"></span>
+    </div>
+
+
+</form>
