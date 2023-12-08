@@ -1,4 +1,9 @@
 ﻿@page
+@using Sejlklub23.Models;
+@using Sejlklub23.Interfaces;
+@inject IReservationRepository rRepo;
+@inject IBoatRepository bRepo;
+@inject IMemberRepository mRepo;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -6,5 +11,30 @@
 
 <div class="text-center">
     <h1 class="display-4">Velkommen til Molle, Stéphane og Gustav</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>. Eller spørg Gustav, de ved også alle mulige ting</p>
+    <p>
+        <table class="table">
+            <thead>
+                <th>Id</th>
+                <th>Start</th>
+                <th>Duration</th>
+                <th>Returned</th>
+                <th>Boat</th>
+                <th>Member</th>
+            </thead>
+            <tbody>
+        @foreach (Reservation r in rRepo.GetAllReservations().Where(x=>x.StartOfLocation < DateTime.Now && x.StartOfLocation.AddHours(x.LocationDuration) > DateTime.Now))
+        {
+            <tr>
+                <td>@r.Id</td>
+                <td>@r.StartOfLocation</td>
+                <td>@r.LocationDuration</td>
+                <td>@r.IsReturned</td>
+                <td>@bRepo.GetBoat(r.BoatId).Name</td>
+                <td>@mRepo.GetMember(r.MemberId).Name</td>
+            </tr>
+        }
+                    
+            </tbody>
+        </table>
+    </p>
 </div>
