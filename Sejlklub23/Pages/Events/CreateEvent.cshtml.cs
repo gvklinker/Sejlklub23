@@ -20,12 +20,12 @@ namespace Sejlklub23.Pages.Events
 
         public IActionResult OnPost()
         {
-            if (NewEvent != null)
+            if (!ModelState.IsValid)
             {
-                _repo.CreateEvent(NewEvent);
-                return RedirectToPage("Index");
+                return Page();
             }
-            return RedirectToPage();
+            _repo.CreateEvent(NewEvent);
+            return RedirectToPage("Index");
         }
     }
 }
