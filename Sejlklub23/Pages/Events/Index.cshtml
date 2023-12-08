@@ -17,23 +17,16 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Image</th>
+            
             <th>Id</th>
-            <th>
-                Name
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Place
-            </th>
-            <th>
-                Country
-            </th>
-            <th>
-                DateTime
-            </th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Time</th>
+            <th>Duration</th>
+            <th>Location</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -43,10 +36,13 @@
                 <td>
                     @item.Id
                 </td>
+                <td>@item.Title</td>
                 <td>
                     @item.Description
                 </td>
-
+                <td>@item.StartOfEvent</td>
+                <td>@item.EventDuration</td>
+                <td>@item.Address</td>
                 <td>
                     <a asp-page="EditEvent" asp-route-id="@item.Id"> Edit</a>
                 </td>
