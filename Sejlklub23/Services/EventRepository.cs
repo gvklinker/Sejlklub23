@@ -62,6 +62,7 @@ namespace Sejlklub23.Services
                         e.Address = ev.Address;
                         e.StartOfEvent = ev.StartOfEvent;
                         JsonFileWriter<Event>.WriteToJson(_events, jsonFileName);
+                        break;
                     }
                 }
             }
