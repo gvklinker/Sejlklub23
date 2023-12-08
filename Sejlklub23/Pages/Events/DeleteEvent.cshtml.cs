@@ -9,7 +9,7 @@ namespace Sejlklub23.Pages.Events
     {
         private IEventRepository _repo;
 
-        [BindProperty]
+        //[BindProperty]
         public Event DeleteEvent { get; set; }
 
 
