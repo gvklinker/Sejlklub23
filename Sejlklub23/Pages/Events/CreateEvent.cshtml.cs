@@ -15,9 +15,10 @@ namespace Sejlklub23.Pages.Events
         {
             _repo = eventRepository;
         }
+        public void OnGet() { }
 
 
-        public IActionResult OnGet()
+        public IActionResult OnPost()
         {
             if (NewEvent != null)
             {

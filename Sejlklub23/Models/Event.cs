@@ -15,6 +15,10 @@ namespace Sejlklub23.Models
         public int EventDuration { get; set;}
         [Required]
         public string Address { get; set; }
+        public Event()
+        {
+            
+        }
 
         public Event (int id, string title, string description, DateTime startOfEvent, int eventDuration, string address)
         {
