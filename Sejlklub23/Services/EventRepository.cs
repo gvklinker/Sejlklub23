@@ -6,38 +6,40 @@ namespace Sejlklub23.Services
 {
     public class EventRepository : IEventRepository
     {
-        private List<Event> _events;
         string jsonFileName = @"Data\Events.json";
+
         public void CreateEvent(Event ev)
         {
+            List<int> ids = new List<int>();
+            List<Event> events = GetAllEvents();
+            foreach (var item in events)
+                 ids.Add(item.Id);
+            if (ids.Count != 0)
+                ev.Id = ids.Max() + 1;
+            else
+                ev.Id = 1;
             if (ev != null)
             {
-                _events.Add(ev);
-                JsonFileWriter<Event>.WriteToJson(_events, jsonFileName);
+                events.Add(ev);
+                JsonFileWriter<Event>.WriteToJson(events, jsonFileName);
             }
         }
 
-        public void DeleteEvent(Event ev)
-        {
-            for (int i = 0; i < _events.Count; i++)
-            {
-                if (ev != null || ev.Id == _events[i].Id)
-                {
-                    _events.RemoveAt(i);
-                    JsonFileWriter<Event>.WriteToJson(_events, jsonFileName);
-                    break;
-                }
-            }
+        public void DeleteEvent(Event ev) {
+            List<Event> events = GetAllEvents();
+            events.Remove(events.Find(x=>x.Id == ev.Id));
+            JsonFileWriter<Event>.WriteToJson(events, jsonFileName);
         }
 
         public List<Event> GetAllEvents()
         {
-            return _events;
+            return JsonFileReader<Event>.ReadJson(jsonFileName); ;
         }
 
         public Event GetEvent(int id)
         {
-            foreach (Event ev in _events)
+            List<Event> events = GetAllEvents();
+            foreach (Event ev in events)
             {
                 if (ev.Id.Equals(id))
                     return ev;
@@ -47,6 +49,7 @@ namespace Sejlklub23.Services
 
         public void UpdateEvent(Event ev)
         {
+            List<Event> _events = GetAllEvents();
             if (ev != null)
             {
                 foreach(Event e in _events)

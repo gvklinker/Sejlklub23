@@ -11,20 +11,21 @@ namespace Sejlklub23.Pages.Events
 
         [BindProperty]
         public Event NewEvent { get; set; }
-        private CreateEventModel(IEventRepository eventRepository)
+        public CreateEventModel(IEventRepository eventRepository)
         {
             _repo = eventRepository;
         }
+        public void OnGet() { }
 
 
-        public IActionResult OnGet()
+        public IActionResult OnPost()
         {
-            if (NewEvent != null)
+            if (!ModelState.IsValid)
             {
-                _repo.CreateEvent(NewEvent);
-                return RedirectToPage("Index");
+                return Page();
             }
-            return RedirectToPage();
+            _repo.CreateEvent(NewEvent);
+            return RedirectToPage("Index");
         }
     }
 }

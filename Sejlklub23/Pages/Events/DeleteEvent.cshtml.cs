@@ -9,7 +9,7 @@ namespace Sejlklub23.Pages.Events
     {
         private IEventRepository _repo;
 
-        [BindProperty]
+        //[BindProperty]
         public Event DeleteEvent { get; set; }
 
 
@@ -17,15 +17,15 @@ namespace Sejlklub23.Pages.Events
         {
             _repo = repo;
         }
-        public IActionResult OnGet(int deleteId)
+        public IActionResult OnGet(int id)
         {
-            DeleteEvent = _repo.GetEvent(deleteId);
+            DeleteEvent = _repo.GetEvent(id);
             return Page();
         }
 
-        public IActionResult OnPostDelete(int nummer)
+        public IActionResult OnPostDelete(int id)
         {
-            DeleteEvent = _repo.GetEvent(nummer);
+            DeleteEvent = _repo.GetEvent(id);
             _repo.DeleteEvent(DeleteEvent);
             return RedirectToPage("Index");
         }

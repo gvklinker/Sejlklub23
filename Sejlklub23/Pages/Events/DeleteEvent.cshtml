@@ -14,7 +14,7 @@
         <label>Event duration</label> : @Model.DeleteEvent.EventDuration <br />
         <label>Event Address</label> : @Model.DeleteEvent.Address <br />
 
-        <input type="submit" asp-page-handler="Delete" asp-route-nummer="@Model.DeleteEvent.Id" class="btn btn-danger" value="Delete event" />
+        <input type="submit" asp-page-handler="Delete" asp-route-id="@Model.DeleteEvent.Id" class="btn btn-danger" value="Delete event" />
 
         <input type="submit" value="Cancel" class="btn btn-warning" asp-page-handler="Cancel" />
     </div>
