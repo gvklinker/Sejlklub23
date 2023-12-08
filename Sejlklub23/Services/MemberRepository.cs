@@ -83,5 +83,22 @@ namespace Sejlklub23.Services
                 dict.Add(m.Id, m);            
             return dict;
         }
+
+        public Member VerifyMember(string memberName, string passWord)
+        {
+            Dictionary<int, Member> _members = GetAllMembers();
+
+            for (int i = 0; i < _members.Count; i++)
+            {
+                if (_members.ElementAt(i).Value.Name == memberName)
+                {
+                    if (passWord == _members.ElementAt(i).Value.Password)
+                    {
+                        return _members.ElementAt(i).Value;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

@@ -9,7 +9,8 @@ builder.Services.AddTransient<IBoatRepository, BoatRepository>();
 builder.Services.AddTransient<IEventRepository, EventRepository>();
 builder.Services.AddTransient<IMemberRepository, MemberRepository>();
 builder.Services.AddTransient<IReservationRepository, ReservationRepository>();
-
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 
 
 var app = builder.Build();
@@ -22,6 +23,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
