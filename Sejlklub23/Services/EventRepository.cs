@@ -25,18 +25,10 @@ namespace Sejlklub23.Services
             }
         }
 
-        public void DeleteEvent(Event ev)
-        {
-            List<Event> _events = GetAllEvents();
-            for (int i = 0; i < _events.Count; i++)
-            {
-                if (ev != null || ev.Id == _events[i].Id)
-                {
-                    _events.RemoveAt(i);
-                    JsonFileWriter<Event>.WriteToJson(_events, jsonFileName);
-                    break;
-                }
-            }
+        public void DeleteEvent(Event ev) {
+            List<Event> events = GetAllEvents();
+            events.Remove(events.Find(x=>x.Id == ev.Id));
+            JsonFileWriter<Event>.WriteToJson(events, jsonFileName);
         }
 
         public List<Event> GetAllEvents()
