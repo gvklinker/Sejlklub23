@@ -1,0 +1,23 @@
+﻿@page
+@model Sejlklub23.Pages.Members.LoginSystemModel
+@{
+}
+
+<h3>Login form</h3>
+<p>@Model.Message</p>
+<form method="post">
+    <table>
+        <tr>
+            <td>UserName  (Poul eller Charlotte)</td>
+            <td><Input type="text" asp-for="@Model.MemberName" /></td>
+        </tr>
+        <tr>
+            <td>Password (123)</td>
+            <td><Input type="password" asp-for="@Model.Password"/></td>
+        </tr>
+        <tr>
+            <td><Input type="submit" value="Login" /></td>
+        </tr>
+    </table>
+
+</form>

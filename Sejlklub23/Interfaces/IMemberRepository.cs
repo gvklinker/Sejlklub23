@@ -9,5 +9,6 @@ namespace Sejlklub23.Interfaces
         void CreateMember(Member member);
         void DeleteMember(int id);
         void UpdateMember(Member member);
+        public Member VerifyMember(string MemberName, string passWord);
     }
 }
