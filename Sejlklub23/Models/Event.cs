@@ -15,7 +15,7 @@ namespace Sejlklub23.Models
         public int EventDuration { get; set;}
         [Required]
         public string Address { get; set; }
-        public List<Member> Attendes { get; set; }
+        public List<string> Attendes { get; set; }
         public Event()
         {
             
