@@ -1,0 +1,23 @@
+﻿@page
+@model Sejlklub23.Pages.Events.AttendEventModel
+@{
+    ViewData["Title"] = "Attend Event";
+}
+<h1>Attendees for @Model.TheEvent.Title</h1>
+<ul class="list-group">
+    @foreach(string name in Model.TheEvent.Attendees){
+        <li class="list-group-item">@name</li>
+    }
+</ul>
+
+<form method="post">
+    <input type="hidden" asp-for="@Model.TheEvent.Id" />
+    <input type="hidden" asp-for="@Model.TheEvent.Title" />
+    <input type="hidden" asp-for="@Model.TheEvent.Description" />
+    <input type="hidden" asp-for="@Model.TheEvent.StartOfEvent" />
+    <input type="hidden" asp-for="@Model.TheEvent.EventDuration" />
+    <input type="hidden" asp-for="@Model.TheEvent.Address" />
+    <div class="form-group">
+        <input type="submit" value="Attend" class="btn btn-primary" />
+    </div>
+</form>

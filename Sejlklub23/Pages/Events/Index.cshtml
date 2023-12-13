@@ -26,7 +26,7 @@
             <th>Location</th>
             <th>Edit</th>
             <th>Delete</th>
-            <th>A</th>
+            <th>Attending</th>
             
         </tr>
     </thead>
@@ -49,6 +49,9 @@
                 </td>
                 <td>
                     <a asp-page="DeleteEvent" asp-route-id="@item.Id"> Delete</a>
+                </td>
+                <td>
+                    <a asp-page="AttendEvent" asp-route-id="@item.Id"> Attend</a>
                 </td>
             </tr>
         }

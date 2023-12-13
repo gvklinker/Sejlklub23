@@ -16,5 +16,14 @@
     "PhoneNumber": "25632532",
     "Address": "Andevej 3",
     "IsAdmin": false
+  },
+  {
+    "Id": 2,
+    "Name": "Gustav Klinker",
+    "Password": "J3gErMed!",
+    "Email": "gulle139@hotmail.com",
+    "PhoneNumber": "42725669",
+    "Address": "Borgmestervangen 9. 2.11",
+    "IsAdmin": false
   }
 ]

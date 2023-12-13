@@ -18,7 +18,7 @@ namespace Sejlklub23.Models
         public List<string> Attendees { get; set; }
         public Event()
         {
-            
+            Attendees = new List<string>();
         }
 
         public Event (int id, string title, string description, DateTime startOfEvent, int eventDuration, string address)
@@ -29,6 +29,7 @@ namespace Sejlklub23.Models
             StartOfEvent = startOfEvent;
             EventDuration = eventDuration;
             Address = address;
+            Attendees = new List<string>();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Sejlklub23.Pages.Members
             Member loginMember = _memberService.VerifyMember(MemberName, Password);
             if (loginMember != null)
             {
-                HttpContext.Session.SetString("MemberName", loginMember.Password);
+                HttpContext.Session.SetString("MemberName", loginMember.Name);
                 return RedirectToPage("/Index");
             }
             else
