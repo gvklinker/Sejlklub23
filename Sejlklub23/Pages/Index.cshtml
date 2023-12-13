@@ -35,6 +35,20 @@
         }
                     
             </tbody>
+            <tbody class="text-danger">
+                @foreach (Reservation r in rRepo.GetAllReservations().Where(x => x.StartOfLocation.AddHours(x.LocationDuration) < DateTime.Now && !x.IsReturned))
+                {
+                    <tr>
+                        <td>@r.Id</td>
+                        <td>@r.StartOfLocation</td>
+                        <td>@r.LocationDuration</td>
+                        <td>@r.IsReturned</td>
+                        <td>@bRepo.GetBoat(r.BoatId).Name</td>
+                        <td>@mRepo.GetMember(r.MemberId).Name</td>
+                    </tr>
+                }
+
+            </tbody>
         </table>
     </p>
 </div>
