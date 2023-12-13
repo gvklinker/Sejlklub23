@@ -17,6 +17,7 @@ namespace Sejlklub23.Pages.Reservations
         public SelectList BoatList { get; set; }
         [BindProperty]
         public Reservation NewReservation { get; set; }
+        public string ErrorMessage { get; set; }
 
         public CreateReservationModel(IReservationRepository repo, IMemberRepository mRepo, IBoatRepository bRepo)
         {
@@ -38,6 +39,15 @@ namespace Sejlklub23.Pages.Reservations
             {
                 return Page();
             }
+            try {
+                reservationRepository.CreateReservation(NewReservation); 
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ex.Message;
+                return Page();
+            }
+            ErrorMessage = string.Empty;
             reservationRepository.CreateReservation(NewReservation);
             return RedirectToPage("Index");
         }    
