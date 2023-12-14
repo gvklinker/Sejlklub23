@@ -6,6 +6,7 @@ namespace Sejlklub23.Interfaces
     {
         Dictionary<int ,Member> GetAllMembers();
         Member GetMember(int id);
+        //Member GetMemberbByName(string name);
         void CreateMember(Member member);
         void DeleteMember(int id);
         void UpdateMember(Member member);

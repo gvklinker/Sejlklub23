@@ -15,16 +15,16 @@ namespace Sejlklub23.Services
             List<int> ids = new List<int>();
             List<Reservation> reservs = GetAllReservations();
 
-            if(res.StartOfLocation < DateTime.Now) {
+            if(res.StartOfLocation < DateTime.Now || res.LocationDuration > 0) {
                 for (int i = 0; i < reservs.Count; i++) {
                     {
-                        //username = 
-                        //res.MemberId =
                         if (res.MemberId == reservs[i].MemberId && res.StartOfLocation > reservs[i].StartOfLocation.AddHours(reservs[i].LocationDuration))
                         {
+                            
                             if (res.BoatId == reservs[i].BoatId)
                             {
                                 if (res.StartOfLocation > reservs[i].StartOfLocation.AddHours(reservs[i].LocationDuration) && res.StartOfLocation.AddHours(res.LocationDuration) < reservs[i].StartOfLocation)
+                                {
                                     if (i == reservs.Count - 1)
                                     {
                                         //Looks for through the IDs of the reservationss
@@ -40,11 +40,18 @@ namespace Sejlklub23.Services
                                         reservs.Add(res);
                                         JsonFileWriter<Reservation>.WriteToJson(reservs, fileNameJson);
                                     }
+                                }
+                                else
+                                    throw new Exception("the boat is already booked during the chosen time");                                
                             }
                         }
+                        else                       
+                            throw new Exception("you have already booked a boat during this time");                        
                     }
                 }
             }
+            else 
+                throw new Exception("you can't book a boat in the past or book periode lesser than 1hour");
         }
 
         public void DeleteReservation(int id)

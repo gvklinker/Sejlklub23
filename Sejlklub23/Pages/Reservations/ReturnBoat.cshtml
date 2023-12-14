@@ -1,0 +1,15 @@
+﻿@page
+@model Sejlklub23.Pages.Reservations.ReturnBoatModel
+@{
+    ViewData["Title"] = "Return Boat";
+}
+
+<h1>current situation of the boat</h1>
+
+<form method="post">
+    <div class=" form-group">
+        <input type="submit" value="the boat is returned" asp-asp-page-handler="Returned" class="btn btn-primary" />
+        <input type="submit" value="signal a problem" asp-asp-page-handler="Problem" class="btn btn-primary" />
+        <input type="submit" value="extand or cancel" asp-asp-page-handler="Cancel" class="btn btn-primary" />
+    </div>
+</form>

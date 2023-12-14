@@ -29,17 +29,22 @@ namespace Sejlklub23.Pages.Reservations
             MemberList = new SelectList( Members.Values,"Id", "Name");
             BoatList = new SelectList(Boats, "Id", "Name");
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            
+           if (HttpContext.Session!= null)
+                return Page();
+           return RedirectToPage("Members/LoginSystem");
         }
 
         public IActionResult OnPost() { 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
+            int userId = int.Parse(HttpContext.Session.GetString("MemberId"));
+            NewReservation.MemberId = userId;
             try {
+
                 reservationRepository.CreateReservation(NewReservation); 
             }
             catch (Exception ex)
