@@ -31,9 +31,12 @@ namespace Sejlklub23.Pages.Members
         public IActionResult OnPost()
         {
             Member loginMember = _memberService.VerifyMember(MemberName, Password);
+
+
             if (loginMember != null)
             {
                 HttpContext.Session.SetString("MemberName", loginMember.Name);
+                HttpContext.Session.SetString("MemberId", loginMember.Id.ToString());
                 return RedirectToPage("/Index");
             }
             else
