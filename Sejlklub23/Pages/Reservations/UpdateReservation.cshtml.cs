@@ -45,5 +45,10 @@ namespace Sejlklub23.Pages.Reservations
             _reservationRepository.DeleteReservation(ReservationToUpdate.Id);
             return RedirectToPage("Index");
         }
+
+        public IActionResult OnGetCancel()
+        {
+            return RedirectToPage("Index");
+        }
     }
 }

@@ -44,6 +44,24 @@ namespace Sejlklub23.Services
                                 else
                                     throw new Exception("the boat is already booked during the chosen time");                                
                             }
+                            else
+                            {
+                                if (i == reservs.Count - 1)
+                                {
+                                    //Looks for through the IDs of the reservationss
+                                    foreach (var item in reservs)
+                                    {
+                                        ids.Add(item.Id);
+                                    }
+                                    //based on whether this is the first entry or not it either gives the boat an ID of 1 or 1+the highest value ID in the current list
+                                    if (ids.Count != 0)
+                                        res.Id = ids.Max() + 1;
+                                    else
+                                        res.Id = 1;
+                                    reservs.Add(res);
+                                    JsonFileWriter<Reservation>.WriteToJson(reservs, fileNameJson);
+                                }
+                            }
                         }
                         else                       
                             throw new Exception("you have already booked a boat during this time");                        
