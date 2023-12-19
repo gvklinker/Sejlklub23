@@ -8,6 +8,7 @@ namespace Sejlklub23.Interfaces
         Reservation GetReservation(int id);
         void CreateReservation(Reservation res);
         void DeleteReservation(int id);
+        void AcceptableReservation(Reservation res);
         void UpdateReservation(Reservation res);
     }
 }

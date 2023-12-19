@@ -31,9 +31,9 @@ namespace Sejlklub23.Pages.Reservations
         }
         public IActionResult OnGet()
         {
-           if (HttpContext.Session!= null)
+           if (HttpContext.Session.GetString("MemberId") != null)
                 return Page();
-           return RedirectToPage("Members/LoginSystem");
+           return RedirectToPage("/Members/LoginSystem");
         }
 
         public IActionResult OnPost() { 
@@ -45,7 +45,7 @@ namespace Sejlklub23.Pages.Reservations
             NewReservation.MemberId = userId;
             try {
 
-                reservationRepository.CreateReservation(NewReservation); 
+                reservationRepository.AcceptableReservation(NewReservation);
             }
             catch (Exception ex)
             {
@@ -55,6 +55,6 @@ namespace Sejlklub23.Pages.Reservations
             ErrorMessage = string.Empty;
             reservationRepository.CreateReservation(NewReservation);
             return RedirectToPage("Index");
-        }    
+        }
     }
 }

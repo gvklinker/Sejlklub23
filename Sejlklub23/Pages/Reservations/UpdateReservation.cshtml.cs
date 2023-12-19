@@ -17,6 +17,7 @@ namespace Sejlklub23.Pages.Reservations
         public SelectList BoatList { get; set; }
         [BindProperty]
         public Reservation ReservationToUpdate { get; set; }
+        public string ErrorMessage { get; set; }
 
         public UpdateReservationModel(IReservationRepository repo, IMemberRepository mRepo, IBoatRepository bRepo)
         {
@@ -36,6 +37,15 @@ namespace Sejlklub23.Pages.Reservations
 
         public IActionResult OnPostUpdate()
         {
+            try
+            {
+                _reservationRepository.AcceptableReservation(ReservationToUpdate);
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ex.Message;
+                return Page();
+            }
             _reservationRepository.UpdateReservation(ReservationToUpdate);
             return RedirectToPage("Index");
         }
@@ -43,6 +53,11 @@ namespace Sejlklub23.Pages.Reservations
         public IActionResult OnPostDelete()
         {
             _reservationRepository.DeleteReservation(ReservationToUpdate.Id);
+            return RedirectToPage("Index");
+        }
+
+        public IActionResult OnGetCancel()
+        {
             return RedirectToPage("Index");
         }
     }
