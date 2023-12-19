@@ -2,6 +2,7 @@
 using Sejlklub23.Models;
 using Sejlklub23.Helpers;
 using Sejlklub23.Pages.Members;
+using System.Collections.Generic;
 
 namespace Sejlklub23.Services
 {
@@ -14,68 +15,53 @@ namespace Sejlklub23.Services
         {
             List<int> ids = new List<int>();
             List<Reservation> reservs = GetAllReservations();
+            for (int i = 0; i < reservs.Count; i++)
+            {
 
-            if(res.StartOfLocation < DateTime.Now || res.LocationDuration > 0) {
-                for (int i = 0; i < reservs.Count; i++) {
+                if (i == reservs.Count - 1)
+                {
+                    //Looks for through the IDs of the reservationss
+                    foreach (var item in reservs)
                     {
-                        if (res.MemberId == reservs[i].MemberId && res.StartOfLocation > reservs[i].StartOfLocation.AddHours(reservs[i].LocationDuration))
-                        {
-                            
-                            if (res.BoatId == reservs[i].BoatId)
-                            {
-                                if (res.StartOfLocation > reservs[i].StartOfLocation.AddHours(reservs[i].LocationDuration) && res.StartOfLocation.AddHours(res.LocationDuration) < reservs[i].StartOfLocation)
-                                {
-                                    if (i == reservs.Count - 1)
-                                    {
-                                        //Looks for through the IDs of the reservationss
-                                        foreach (var item in reservs)
-                                        {
-                                            ids.Add(item.Id);
-                                        }
-                                        //based on whether this is the first entry or not it either gives the boat an ID of 1 or 1+the highest value ID in the current list
-                                        if (ids.Count != 0)
-                                            res.Id = ids.Max() + 1;
-                                        else
-                                            res.Id = 1;
-                                        reservs.Add(res);
-                                        JsonFileWriter<Reservation>.WriteToJson(reservs, fileNameJson);
-                                    }
-                                }
-                                else
-                                    throw new Exception("the boat is already booked during the chosen time");                                
-                            }
-                            else
-                            {
-                                if (i == reservs.Count - 1)
-                                {
-                                    //Looks for through the IDs of the reservationss
-                                    foreach (var item in reservs)
-                                    {
-                                        ids.Add(item.Id);
-                                    }
-                                    //based on whether this is the first entry or not it either gives the boat an ID of 1 or 1+the highest value ID in the current list
-                                    if (ids.Count != 0)
-                                        res.Id = ids.Max() + 1;
-                                    else
-                                        res.Id = 1;
-                                    reservs.Add(res);
-                                    JsonFileWriter<Reservation>.WriteToJson(reservs, fileNameJson);
-                                }
-                            }
-                        }
-                        else                       
-                            throw new Exception("you have already booked a boat during this time");                        
+                        ids.Add(item.Id);
                     }
+                    //based on whether this is the first entry or not it either gives the boat an ID of 1 or 1+the highest value ID in the current list
+                    if (ids.Count != 0)
+                        res.Id = ids.Max() + 1;
+                    else
+                        res.Id = 1;
                 }
             }
-            else 
+            reservs.Add(res);
+            JsonFileWriter<Reservation>.WriteToJson(reservs, fileNameJson);
+        }
+
+        public void AcceptableReservation(Reservation res)
+        {
+            List<Reservation> reservs = GetAllReservations();
+            if (res.StartOfLocation < DateTime.Now || res.LocationDuration <= 0)
+            {
                 throw new Exception("you can't book a boat in the past or book periode lesser than 1hour");
+            }
+            for (int i = 0; i < reservs.Count; i++)
+            {
+                if(res.MemberId == reservs[i].MemberId)
+                { 
+                    if (res.StartOfLocation > reservs[i].StartOfLocation.AddHours(reservs[i].LocationDuration) && res.StartOfLocation.AddHours(res.LocationDuration) < reservs[i].StartOfLocation)
+                    throw new Exception("you have already booked a boat during this time");
+                }
+                if (res.BoatId == reservs[i].BoatId)
+                {
+                    if (res.StartOfLocation > reservs[i].StartOfLocation.AddHours(reservs[i].LocationDuration) && res.StartOfLocation.AddHours(res.LocationDuration) < reservs[i].StartOfLocation)
+                        throw new Exception("the boat is already booked during the chosen time");
+                }
+            }
         }
 
         public void DeleteReservation(int id)
         {
             List<Reservation> reservations = GetAllReservations();
-            reservations.Remove(reservations.Find(x=>x.Id==id));
+            reservations.Remove(reservations.Find(x => x.Id == id));
             JsonFileWriter<Reservation>.WriteToJson(reservations, fileNameJson);
 
         }

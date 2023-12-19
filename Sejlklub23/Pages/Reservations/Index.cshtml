@@ -36,12 +36,12 @@
                 <td>@mRepo.GetMember(r.MemberId).Name</td>
                 @if (HttpContext.Session.GetString("MemberId") != null)
                 {
-                    @if (r.StartOfLocation < DateTime.Now && r.MemberId == int.Parse(HttpContext.Session.GetString("MemberId")))
+                    @if (r.StartOfLocation > DateTime.Now && r.MemberId == int.Parse(HttpContext.Session.GetString("MemberId")))
                     {
                         <td><a asp-page="UpdateReservation" asp-route-id="@r.Id">Edit</a></td>
                         <td><a asp-page="DeleteReservation" asp-route-deleteId="@r.Id">Delete</a></td>
                     }
-                    else if (r.MemberId == int.Parse(HttpContext.Session.GetString("MemberId")) && r.StartOfLocation >= DateTime.Now)
+                    else if (r.MemberId == int.Parse(HttpContext.Session.GetString("MemberId")) && r.StartOfLocation <= DateTime.Now)
                     {
                         <td><a asp-page="ReturnBoat" asp-route-returnBoat="@r.Id">Return or extand</a></td>
                     }

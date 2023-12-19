@@ -45,7 +45,7 @@ namespace Sejlklub23.Pages.Reservations
             NewReservation.MemberId = userId;
             try {
 
-                reservationRepository.CreateReservation(NewReservation);
+                reservationRepository.AcceptableReservation(NewReservation);
             }
             catch (Exception ex)
             {

@@ -33,6 +33,7 @@
     <div class="form-group">
         <input type="submit" value="Update" asp-page-handler="Update" class="btn btn-primary" />
         <input type="submit" value="Delete" asp-page-handler="Delete" class="btn btn-primary" />
+        <label asp-for="@Model.ErrorMessage" class="danger-text"></label>
     </div>
 
 
