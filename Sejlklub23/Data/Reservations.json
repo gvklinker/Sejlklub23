@@ -30,5 +30,13 @@
     "IsReturned": false,
     "BoatId": 2,
     "MemberId": 0
+  },
+  {
+    "Id": 5,
+    "StartOfLocation": "2023-12-21T09:30:00",
+    "LocationDuration": 5,
+    "IsReturned": false,
+    "BoatId": 1,
+    "MemberId": 1
   }
 ]
